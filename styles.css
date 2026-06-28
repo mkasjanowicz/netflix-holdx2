@@ -1,0 +1,89 @@
+/* HUD overlay styling for Netflix Hold 2x Speed extension */
+
+.netflix-hold-hud {
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  transform: translate(-50%, -15px) scale(0.92);
+  background: rgba(20, 20, 20, 0.75);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50px;
+  padding: 12px 28px;
+  color: #ffffff;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6), 
+              inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  z-index: 2147483647; /* On top of everything, including subtitles and native layers */
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  text-transform: uppercase;
+}
+
+.netflix-hold-hud.active {
+  opacity: 1;
+  transform: translate(-50%, 0) scale(1);
+}
+
+.netflix-hold-hud .speed-text {
+  background: linear-gradient(135deg, #ffffff 40%, #e50914 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.netflix-hold-hud .arrow-icon-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.netflix-hold-hud .arrow-icon {
+  width: 10px;
+  height: 10px;
+  border-top: 3px solid #e50914;
+  border-right: 3px solid #e50914;
+  transform: rotate(45deg);
+  display: inline-block;
+  opacity: 0.5;
+}
+
+.netflix-hold-hud .arrow-icon:nth-child(1) {
+  animation: pulse-arrow-1 1s infinite;
+}
+
+.netflix-hold-hud .arrow-icon:nth-child(2) {
+  animation: pulse-arrow-2 1s infinite;
+}
+
+@keyframes pulse-arrow-1 {
+  0%, 100% {
+    opacity: 0.3;
+    transform: rotate(45deg) scale(0.9);
+  }
+  50% {
+    opacity: 0.8;
+    transform: rotate(45deg) scale(1.1);
+  }
+}
+
+@keyframes pulse-arrow-2 {
+  0%, 100% {
+    opacity: 0.3;
+    transform: rotate(45deg) scale(0.9);
+  }
+  50% {
+    opacity: 1.0;
+    transform: rotate(45deg) scale(1.2);
+  }
+}
